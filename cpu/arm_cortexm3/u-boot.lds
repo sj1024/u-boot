@@ -120,10 +120,6 @@ SECTIONS
 		*(.stack)
 	} >STACK
 
-	/DISCARD/ :
-	{
-		*(*)
-	}
 }
 
 /*
