@@ -119,8 +119,8 @@
  * Configuration of the external PSRAM memory
  */
 #define CONFIG_NR_DRAM_BANKS		1
-#define CONFIG_SYS_RAM_SIZE		(32 * 1024 * 1024)
-#define CONFIG_SYS_RAM_CS		2
+#define CONFIG_SYS_RAM_SIZE		(2 * 1024 * 1024)
+#define CONFIG_SYS_RAM_CS		3
 
 #undef CONFIG_SYS_RAM_BURST
 #define CONFIG_SYS_FSMC_PSRAM_BCR	0x00005059
@@ -129,6 +129,7 @@
 #define CONFIG_FSMC_NOR_PSRAM_CS2_ENABLE
 
 #define CONFIG_SYS_RAM_BASE		FSMC_NOR_PSRAM_CS_ADDR(CONFIG_SYS_RAM_CS)
+#define CONFIG_FSMC_NOR_PSRAM_CS3_ENABLE
 
 #undef CONFIG_LCD
 #ifdef CONFIG_LCD
@@ -139,7 +140,7 @@
 #define CONFIG_FB_ADDR				\
 	(CONFIG_SYS_RAM_BASE + CONFIG_SYS_RAM_SIZE - \
 		roundup(calc_fbsize(), PAGE_SIZE))
-#define CONFIG_LCD_CS			3
+#define CONFIG_LCD_CS			4
 #define CONFIG_LCD_FSMC_BCR			\
 	STM32_FSMC_BCR_MBKEN |			\
 	STM32_FSMC_BCR_WREN |			\
@@ -159,7 +160,6 @@
 	(0 << STM32_FSMC_BWTR_CLKDIV_BIT) |	\
 	(0 << STM32_FSMC_BWTR_DATLAT_BIT) |	\
 	STM32_FSMC_BWTR_ACCMOD_A
-#define CONFIG_FSMC_NOR_PSRAM_CS3_ENABLE
 #define CONFIG_LCD_ILI932x
 #define CONFIG_LCD_ILI932x_BASE		FSMC_NOR_PSRAM_CS_ADDR(CONFIG_LCD_CS)
 #define CONFIG_LCD_ILI932x_DOUBLE_BUFFER
@@ -305,7 +305,7 @@
  * Short-cuts to some useful commands (macros)
  */
 #define CONFIG_EXTRA_ENV_SETTINGS				\
-	"loadaddr=0x64000000\0"					\
+	"loadaddr=0x68000000\0"					\
 	"addip=setenv bootargs ${bootargs} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}:eth0:off\0"				\
 	"flashaddr=60020000\0"					\
 	"flashboot=run addip;bootm ${flashaddr}\0"		\

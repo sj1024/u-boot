@@ -46,7 +46,7 @@ PLATFORM_LDFLAGS =
 
 #########################################################################
 
-HOSTCFLAGS	= -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer \
+HOSTCFLAGS	= -g -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer \
 		  $(HOSTCPPFLAGS)
 HOSTSTRIP	= strip
 
